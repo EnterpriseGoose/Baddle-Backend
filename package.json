@@ -2,14 +2,13 @@
   "name": "baddle-backend-master",
   "version": "1.0.0",
   "description": "",
-  "main": "app",
+  "main": "./app.ts",
   "scripts": {
     "lint-fix": "npx eslint ./src --ext .ts,.json --fix",
-    "tsc": "tsc",
-    "build": "npm-run-all lint-fix tsc",
-    "dev:start": "npm-run-all build start",
-    "dev": "nodemon --enable-source-maps --watch src -e ts,ejs,json --exec npm run dev:start",
-    "start": "node . --enable-source-maps --trace-warnings"
+    "dev:lint": "npm-run-all lint-fix dev:start",
+    "dev:start": "ts-node -r dotenv/config . --enable-source-maps --trace-warnings dotenv_config_path=./.env.development",
+    "dev": "nodemon --enable-source-maps --watch src -e ts,ejs,json --exec npm run dev:lint",
+    "start": "ts-node -r dotenv/config . --enable-source-maps --trace-warnings"
   },
   "dependencies": {
     "axios": "^0.26.0",
