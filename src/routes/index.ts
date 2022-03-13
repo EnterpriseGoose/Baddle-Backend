@@ -1,18 +1,24 @@
-import express from "express";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import express from 'express';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const router = express.Router();
-const uri =
-  "mongodb+srv://great_guy96:<password>@baddle-dev.coexs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+console.log('index route');
+const uri = `mongodb+srv://great_guy96:${process.env.MONGO_PASSWORD}@baddle-dev.coexs.mongodb.net/test?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
-	serverApi: ServerApiVersion.v1,
-});
-client.connect((err) => {
-	const collection = client.db("test").collection("devices");
-	// perform actions on the collection object
-	client.close();
+	serverApi: ServerApiVersion.v1
 });
 
-router.use("/", () => {});
+router.get('/', async (req, res) => {
+	client.connect((err) => {
+		console.log(err);
+		const collection = client.db('test').collection('test_collection');
+		// perform actions on the collection object
+		console.log(collection);
+		console.log(collection.collectionName);
+		client.close();
+	});
+	res.send({ hello: 'world' });
+});
 
 export default router;
