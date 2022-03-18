@@ -5,6 +5,7 @@ import cors from 'cors';
 import logger from 'morgan';
 
 import indexRouter from './src/routes/index';
+import loginRouter from './src/routes/login';
 
 const app = express();
 
@@ -21,3 +22,4 @@ const listener = app.listen(3100, function () {
 });
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
