@@ -11,7 +11,7 @@ const client = new MongoClient(uri, {
 });
 
 router.post('/', async (req, res) => {
-	console.log(req.baseUrl);
+	console.log(req);
 	res.send(req.body);
 });
 

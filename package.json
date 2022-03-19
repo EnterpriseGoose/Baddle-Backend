@@ -7,7 +7,7 @@
 		"lint-fix": "npx eslint ./src --ext .ts,.json --fix",
 		"dev:lint": "npm-run-all lint-fix dev:start",
 		"dev:start": "ts-node -r dotenv/config . --enable-source-maps --trace-warnings dotenv_config_path=./.env.development",
-		"dev": "nodemon --enable-source-maps --watch src,./app.ts -e ts,ejs,json --exec npm run dev:start",
+		"dev": "nodemon --enable-source-maps --exec npm run dev:start",
 		"start": "ts-node -r dotenv/config . --enable-source-maps --trace-warnings"
 	},
 	"dependencies": {
