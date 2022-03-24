@@ -1,5 +1,5 @@
-import { AddressInfo } from 'express-ws/node_modules/@types/ws';
-import express from 'express';
+import { AddressInfo } from 'ws';
+import express, { NextFunction, Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import logger from 'morgan';
